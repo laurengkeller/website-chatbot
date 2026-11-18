@@ -25,6 +25,9 @@
         "jan-apr": "Tax season is here. Need help before the deadline, or something else?",
         "may-aug": "Mid-year is when small gaps in your books, HR and systems start turning into year-end problems. What should we look at?"
       },
+      "messages": [
+        "What would you like to do?"
+      ],
       "buttons": [
         {
           "label": "Get guidance",
@@ -255,7 +258,8 @@
     },
     "SVC – Business Tax – Resource": {
       "messages": [
-        "Here's the Strategic Tax Planning for Business Owners guide: [Read the guide →](https://dk.cpa/tax/strategic-tax-planning-for-business-owners-a-complete-guide-to-maximizing-profits-and-minimizing-liabilities/ \"business-tax-resource\")"
+        "Here's the Strategic Tax Planning for Business Owners guide: [Read the guide →](https://dk.cpa/tax/strategic-tax-planning-for-business-owners-a-complete-guide-to-maximizing-profits-and-minimizing-liabilities/ \"business-tax-resource\")",
+        "What would you like to do next?"
       ],
       "buttons": [
         {
@@ -301,7 +305,8 @@
     },
     "SVC – Individual Tax – Resource": {
       "messages": [
-        "Here's our rundown of the tax law changes you need to know about: [Read the article →](https://dk.cpa/tax/2026-tax-law-changes-you-need-to-know-about/ \"individual-tax-resource\")"
+        "Here's our rundown of the tax law changes you need to know about: [Read the article →](https://dk.cpa/tax/2026-tax-law-changes-you-need-to-know-about/ \"individual-tax-resource\")",
+        "What would you like to do next?"
       ],
       "buttons": [
         {
@@ -347,7 +352,8 @@
     },
     "SVC – Accounting – Resource": {
       "messages": [
-        "Here's our take on when it makes sense to outsource your accounting: [Read the article →](https://dk.cpa/accounting-finance/accounting-and-finance-should-i-outsource-my-accounting/ \"accounting-resource\")"
+        "Here's our take on when it makes sense to outsource your accounting: [Read the article →](https://dk.cpa/accounting-finance/accounting-and-finance-should-i-outsource-my-accounting/ \"accounting-resource\")",
+        "What would you like to do next?"
       ],
       "buttons": [
         {
@@ -393,7 +399,8 @@
     },
     "SVC – Financial Statement Audit – Resource": {
       "messages": [
-        "Here's our guide to financial audits: [Read the guide →](https://dk.cpa/audit-assurance/the-ultimate-guide-to-financial-audits-unlocking-business-growth-and-compliance/ \"fs-audit-resource\")"
+        "Here's our guide to financial audits: [Read the guide →](https://dk.cpa/audit-assurance/the-ultimate-guide-to-financial-audits-unlocking-business-growth-and-compliance/ \"fs-audit-resource\")",
+        "What would you like to do next?"
       ],
       "buttons": [
         {
@@ -439,7 +446,8 @@
     },
     "SVC – Nonprofit Audit – Resource": {
       "messages": [
-        "Here's the Nonprofit Audit Readiness Guide: [Read the guide →](https://dk.cpa/services/audit-and-assurance-services/nonprofit-audit-readiness-guide/ \"nonprofit-audit-resource\")"
+        "Here's the Nonprofit Audit Readiness Guide: [Read the guide →](https://dk.cpa/services/audit-and-assurance-services/nonprofit-audit-readiness-guide/ \"nonprofit-audit-resource\")",
+        "What would you like to do next?"
       ],
       "buttons": [
         {
@@ -485,7 +493,8 @@
     },
     "SVC – EBP Audit – Resource": {
       "messages": [
-        "Here's the 103(a)(3) audit checklist: [Get the checklist →](https://dk.cpa/audit-assurance/streamline-your-erisa-audit-download-the-103a3c-audit-checklist/ \"ebp-audit-resource\")"
+        "Here's the 103(a)(3) audit checklist: [Get the checklist →](https://dk.cpa/audit-assurance/streamline-your-erisa-audit-download-the-103a3c-audit-checklist/ \"ebp-audit-resource\")",
+        "What would you like to do next?"
       ],
       "buttons": [
         {
@@ -531,7 +540,8 @@
     },
     "SVC – Estate & Trusts – Resource": {
       "messages": [
-        "Here's our article on when a gift isn't treated as a gift for tax purposes: [Read the article →](https://dk.cpa/tax/estate-trust/when-is-a-gift-not-a-gift/ \"estate-trusts-resource\")"
+        "Here's our article on when a gift isn't treated as a gift for tax purposes: [Read the article →](https://dk.cpa/tax/estate-trust/when-is-a-gift-not-a-gift/ \"estate-trusts-resource\")",
+        "What would you like to do next?"
       ],
       "buttons": [
         {
@@ -577,7 +587,8 @@
     },
     "SVC – HR Services – Resource": {
       "messages": [
-        "Here's why documentation is the foundation of HR compliance: [Read the article →](https://dk.cpa/business-operations/hr-people-management/why-documentation-is-the-foundation-of-hr-compliance/ \"hr-resource\")"
+        "Here's why documentation is the foundation of HR compliance: [Read the article →](https://dk.cpa/business-operations/hr-people-management/why-documentation-is-the-foundation-of-hr-compliance/ \"hr-resource\")",
+        "What would you like to do next?"
       ],
       "buttons": [
         {
@@ -623,7 +634,8 @@
     },
     "SVC – IT Services – Resource": {
       "messages": [
-        "Here's why email authentication protects your brand: [Read the article →](https://dk.cpa/business-operations/it-services/the-identity-foundation-why-email-authentication-protects-your-brand/ \"it-resource\")"
+        "Here's why email authentication protects your brand: [Read the article →](https://dk.cpa/business-operations/it-services/the-identity-foundation-why-email-authentication-protects-your-brand/ \"it-resource\")",
+        "What would you like to do next?"
       ],
       "buttons": [
         {
@@ -669,7 +681,8 @@
     },
     "SVC – Marketing Services – Resource": {
       "messages": [
-        "Here's the Growth Structure Quiz for small business owners: [Take the quiz →](https://dk.cpa/growth-structure-quiz-for-small-business-owners/ \"marketing-resource\")"
+        "Here's the Growth Structure Quiz for small business owners: [Take the quiz →](https://dk.cpa/growth-structure-quiz-for-small-business-owners/ \"marketing-resource\")",
+        "What would you like to do next?"
       ],
       "buttons": [
         {
@@ -753,7 +766,8 @@
     },
     "IND – Real Estate – Resource": {
       "messages": [
-        "Here's the Asset Value Optimization Quiz for real estate professionals: [Take the quiz →](https://dk.cpa/asset-value-optimization-quiz-for-real-estate-professionals/ \"ind-real-estate-resource\")"
+        "Here's the Asset Value Optimization Quiz for real estate professionals: [Take the quiz →](https://dk.cpa/asset-value-optimization-quiz-for-real-estate-professionals/ \"ind-real-estate-resource\")",
+        "What would you like to do next?"
       ],
       "buttons": [
         {
@@ -806,7 +820,8 @@
     },
     "IND – Not-for-Profit – Resource": {
       "messages": [
-        "Here's the Nonprofit Audit Readiness Guide: [Read the guide →](https://dk.cpa/services/audit-and-assurance-services/nonprofit-audit-readiness-guide/ \"ind-not-for-profit-resource\")"
+        "Here's the Nonprofit Audit Readiness Guide: [Read the guide →](https://dk.cpa/services/audit-and-assurance-services/nonprofit-audit-readiness-guide/ \"ind-not-for-profit-resource\")",
+        "What would you like to do next?"
       ],
       "buttons": [
         {
@@ -859,7 +874,8 @@
     },
     "IND – Professional Services – Resource": {
       "messages": [
-        "Here's the Profitability Self-Assessment for professional services firms: [Take the assessment →](https://dk.cpa/profitability-self-assessment-for-professional-services/ \"ind-professional-services-resource\")"
+        "Here's the Profitability Self-Assessment for professional services firms: [Take the assessment →](https://dk.cpa/profitability-self-assessment-for-professional-services/ \"ind-professional-services-resource\")",
+        "What would you like to do next?"
       ],
       "buttons": [
         {
@@ -912,7 +928,8 @@
     },
     "IND – Construction – Resource": {
       "messages": [
-        "Here's the Readiness Assessment Quiz for construction leaders: [Take the quiz →](https://dk.cpa/readiness-assessment-quiz-for-construction-leaders/ \"ind-construction-resource\")"
+        "Here's the Readiness Assessment Quiz for construction leaders: [Take the quiz →](https://dk.cpa/readiness-assessment-quiz-for-construction-leaders/ \"ind-construction-resource\")",
+        "What would you like to do next?"
       ],
       "buttons": [
         {
@@ -965,7 +982,8 @@
     },
     "IND – Manufacturing & Distribution – Resource": {
       "messages": [
-        "Here's the Readiness Assessment Quiz for manufacturing leaders: [Take the quiz →](https://dk.cpa/readiness-assessment-quiz-for-manufacturing-leaders/ \"ind-manufacturing-resource\")"
+        "Here's the Readiness Assessment Quiz for manufacturing leaders: [Take the quiz →](https://dk.cpa/readiness-assessment-quiz-for-manufacturing-leaders/ \"ind-manufacturing-resource\")",
+        "What would you like to do next?"
       ],
       "buttons": [
         {
@@ -1158,7 +1176,8 @@
     },
     "ABOUT – Meet Us": {
       "messages": [
-        "Duffy Kruspodin has served Southern California businesses, families and nonprofits for more than 35 years. [Who we are →](https://dk.cpa/about-us/who-we-are/ \"about-who-we-are\") · [Meet our team →](https://dk.cpa/about-us/our-team/ \"about-team\") · [Awards & recognition →](https://dk.cpa/about-us/awards-accolades/ \"about-awards\")"
+        "Duffy Kruspodin has served Southern California businesses, families and nonprofits for more than 35 years. [Who we are →](https://dk.cpa/about-us/who-we-are/ \"about-who-we-are\") · [Meet our team →](https://dk.cpa/about-us/our-team/ \"about-team\") · [Awards & recognition →](https://dk.cpa/about-us/awards-accolades/ \"about-awards\")",
+        "What would you like to do next?"
       ],
       "buttons": [
         {
@@ -1177,7 +1196,8 @@
     },
     "ABOUT – Join Our Team": {
       "messages": [
-        "We're always looking for people who want to grow with us. [See open roles →](https://dk.cpa/about-us/careers/ \"about-careers\")"
+        "We're always looking for people who want to grow with us. [See open roles →](https://dk.cpa/about-us/careers/ \"about-careers\")",
+        "What would you like to do next?"
       ],
       "buttons": [
         {
