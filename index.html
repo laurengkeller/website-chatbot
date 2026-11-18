@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DK Chatbot Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dk-green: #003F22;
+    --dk-green-2: #0B5233;
+    --dk-gold: #D6AB27;
+    --dk-gold-text: #BC9721;
+    --gray: #424242;
+    --off-white: #E8E7DC;
+    --bot-bubble: #F3F2EC;
+    --line: #DAD8CB;
+    --white: #FFFFFF;
+    --head: "Barlow Condensed", "Korolev Compressed", "Arial Narrow", sans-serif;
+    --body: "Montserrat", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { font-family: var(--body); color: var(--gray); background: var(--white); }
+
+  /* ---------- Placeholder homepage ---------- */
+  #homepage-shot { display: none; width: 100%; height: auto; }
+  body.has-shot #homepage-shot { display: block; }
+  body.has-shot #placeholder { display: none; }
+  .topbar { background: var(--dk-green); color: var(--off-white); font-size: 12px; padding: 8px 24px; text-align: right; }
+  .topbar span { margin-left: 20px; }
+  header.site { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 24px; border-bottom: 1px solid var(--line); background: var(--white); }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #1d1d1d; }
+  .brand img { height: 40px; width: auto; }
+  .brand b { display: block; font-weight: 700; letter-spacing: .08em; font-size: 15px; }
+  .brand small { display: block; font-size: 11px; color: var(--gray); }
+  nav.site a { color: var(--gray); text-decoration: none; font-size: 13px; font-weight: 600; margin-left: 22px; text-transform: uppercase; letter-spacing: .05em; }
+  .hero { background: linear-gradient(120deg, var(--dk-green) 0%, #00301a 100%); color: var(--white); padding: 96px 24px 104px; position: relative; overflow: hidden; }
+  .hero::after { content: ""; position: absolute; right: -80px; top: 0; bottom: 0; width: 46%; background-image: radial-gradient(rgba(214,171,39,.25) 1.4px, transparent 1.4px); background-size: 18px 18px; }
+  .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+  .rule { width: 72px; height: 4px; background: var(--dk-gold); margin-bottom: 22px; }
+  .hero h1 { font-family: var(--head); font-weight: 600; font-size: clamp(44px, 7vw, 84px); line-height: .95; margin: 0 0 20px; text-transform: uppercase; max-width: 720px; }
+  .hero p { font-size: 17px; line-height: 1.6; max-width: 560px; color: #E6EDE9; margin: 0 0 32px; }
+  .btn { display: inline-block; background: var(--dk-gold); color: var(--dk-green); font-weight: 700; text-decoration: none; padding: 14px 26px; font-size: 14px; letter-spacing: .04em; text-transform: uppercase; }
+  .cards { max-width: 1100px; margin: 0 auto; padding: 72px 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .card { background: var(--off-white); padding: 28px; border-top: 4px solid var(--dk-green); }
+  .card h3 { font-family: var(--head); font-size: 28px; font-weight: 600; color: var(--dk-green); margin: 0 0 10px; text-transform: uppercase; }
+  .card p { margin: 0; font-size: 14px; line-height: 1.6; }
+  .proto-note { text-align: center; font-size: 12px; color: #8a8a80; padding: 0 24px 120px; }
+  @media (max-width: 760px) {
+    nav.site, .topbar { display: none; }
+    .cards { grid-template-columns: 1fr; padding: 40px 16px; }
+    .hero { padding: 64px 16px 72px; }
+    header.site { padding: 14px 16px; }
+  }
+
+  /* ---------- Chat widget ---------- */
+  #launcher { position: fixed; right: 24px; bottom: 24px; width: 60px; height: 60px; border-radius: 50%; border: 0; background: var(--dk-green); color: var(--white); cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,.25), 0 0 0 3px var(--dk-gold); display: grid; place-items: center; z-index: 1001; transition: transform .15s ease; }
+  #launcher:hover { transform: scale(1.05); }
+  #launcher svg { width: 28px; height: 28px; }
+  #launcher .ic-close { display: none; }
+  body.chat-open #launcher .ic-chat { display: none; }
+  body.chat-open #launcher .ic-close { display: block; }
+
+  #chat { position: fixed; right: 24px; bottom: 100px; width: 380px; height: min(640px, calc(100vh - 130px)); background: var(--white); border-radius: 14px; box-shadow: 0 16px 48px rgba(0,0,0,.22); display: flex; flex-direction: column; overflow: hidden; z-index: 1000; opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .2s ease, transform .2s ease; }
+  body.chat-open #chat { opacity: 1; transform: none; pointer-events: auto; }
+
+  .chat-head { background: var(--dk-green); color: var(--white); padding: 14px 14px 14px 16px; display: flex; align-items: center; gap: 12px; border-bottom: 3px solid var(--dk-gold); }
+  .avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--white); display: grid; place-items: center; flex: none; overflow: hidden; }
+  .avatar img { width: 30px; height: auto; }
+  .chat-head .who { flex: 1; min-width: 0; }
+  .chat-head b { display: block; font-size: 15px; font-weight: 700; }
+  .chat-head small { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #CFE0D6; }
+  .chat-head small::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #5BD18B; }
+  .head-btn { background: transparent; border: 0; color: var(--white); width: 34px; height: 34px; border-radius: 8px; cursor: pointer; display: grid; place-items: center; opacity: .85; }
+  .head-btn:hover { background: rgba(255,255,255,.12); opacity: 1; }
+  .head-btn svg { width: 18px; height: 18px; }
+  #chat-min { display: none; }
+
+  #log { flex: 1; overflow-y: auto; padding: 18px 14px 8px; background: var(--white); scroll-behavior: smooth; }
+  .row { display: flex; gap: 8px; margin-bottom: 10px; align-items: flex-end; }
+  .row.user { justify-content: flex-end; }
+  .row .mini { width: 26px; height: 26px; border-radius: 50%; background: var(--white); border: 1px solid var(--line); display: grid; place-items: center; flex: none; }
+  .row .mini img { width: 18px; }
+  .row .mini.ghost { visibility: hidden; }
+  .bubble { max-width: 80%; padding: 10px 13px; border-radius: 14px; font-size: 14px; line-height: 1.5; word-wrap: break-word; animation: pop .18s ease; }
+  .bot .bubble { background: var(--bot-bubble); color: #2b2b2b; border-bottom-left-radius: 4px; }
+  .user .bubble { background: var(--dk-green); color: var(--white); border-bottom-right-radius: 4px; }
+  .bubble b { color: var(--dk-green); font-weight: 700; }
+  .bubble a { color: var(--dk-green); font-weight: 600; text-decoration: underline; text-decoration-color: var(--dk-gold); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  .bubble a:hover { color: var(--dk-gold-text); }
+  .bubble.error { background: #FCEBEA; color: #8A1C14; }
+  @keyframes pop { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+  .typing .bubble { display: inline-flex; gap: 4px; padding: 13px 14px; }
+  .typing i { width: 7px; height: 7px; border-radius: 50%; background: #9b9a8e; animation: blink 1s infinite; }
+  .typing i:nth-child(2) { animation-delay: .15s; }
+  .typing i:nth-child(3) { animation-delay: .3s; }
+  @keyframes blink { 0%, 60%, 100% { opacity: .3; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-3px); } }
+
+  .replies { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; margin: 4px 0 12px 34px; }
+  .replies button { font-family: var(--body); font-size: 13px; font-weight: 600; color: var(--dk-green); background: var(--white); border: 1.5px solid var(--dk-green); border-radius: 999px; padding: 8px 14px; cursor: pointer; text-align: left; line-height: 1.3; transition: background .12s, color .12s; animation: pop .18s ease; }
+  .replies button:focus-visible { background: var(--dk-green); color: var(--white); outline: none; }
+  @media (hover: hover) { .replies button:hover { background: var(--dk-green); color: var(--white); } }
+
+  .ended { text-align: center; font-size: 12px; color: #8a8a80; margin: 14px 0 6px; }
+  .ended button { background: none; border: 0; color: var(--dk-green); font: inherit; font-weight: 600; text-decoration: underline; cursor: pointer; }
+
+  form.composer { display: flex; align-items: center; gap: 8px; border-top: 1px solid var(--line); padding: 10px 10px 10px 14px; background: var(--white); }
+  form.composer input { flex: 1; min-width: 0; border: 0; font-family: var(--body); font-size: 16px; color: #222; padding: 8px 0; outline: none; background: transparent; }
+  form.composer input:disabled { cursor: not-allowed; }
+  form.composer button { width: 38px; height: 38px; border-radius: 50%; border: 0; background: var(--dk-green); color: var(--white); cursor: pointer; display: grid; place-items: center; flex: none; }
+  form.composer button:disabled { background: #C9C8BC; cursor: default; }
+  form.composer button svg { width: 18px; height: 18px; }
+  .powered { text-align: center; font-size: 10.5px; color: #9b9a8e; padding: 0 0 8px; background: var(--white); }
+
+  @media (max-width: 520px) {
+    #chat { right: 0; bottom: 0; width: 100%; height: 100%; height: 100dvh; border-radius: 0; }
+    #chat-min { display: grid; }
+    body.chat-open #launcher { display: none; }
+    body.chat-open { overflow: hidden; }
+    #launcher { right: 16px; bottom: 16px; }
+    .powered { padding-bottom: max(8px, env(safe-area-inset-bottom)); }
+  }
+
+  /* ---------- Prototype inspector (not part of the chatbot) ---------- */
+  #inspector { position: fixed; left: 16px; bottom: 16px; z-index: 900; font-size: 12px; max-width: min(340px, calc(100vw - 110px)); }
+  #inspector summary { cursor: pointer; background: #1d1d1d; color: #fff; padding: 7px 12px; border-radius: 999px; list-style: none; display: inline-block; font-weight: 600; opacity: .8; }
+  #inspector summary::-webkit-details-marker { display: none; }
+  #inspector[open] summary { opacity: 1; }
+  #inspector .panel { margin-bottom: 8px; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+  #inspector dl { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 4px 10px; }
+  #inspector dt { color: #8a8a80; }
+  #inspector dd { margin: 0; color: #222; word-break: break-word; }
+  #inspector .panel button { margin-top: 10px; font: inherit; font-weight: 600; background: var(--off-white); border: 0; border-radius: 6px; padding: 6px 10px; cursor: pointer; }
+  #inspector[open] { display: flex; flex-direction: column-reverse; }
+  body.chat-open #inspector { display: none; }
+  @media (min-width: 521px) { body.chat-open #inspector { display: block; } body.chat-open #inspector[open] { display: flex; } }
+</style>
+</head>
+<body>
+
+<!-- Drop a screenshot named homepage.png next to this file and it replaces the placeholder below. -->
+<img id="homepage-shot" src="homepage.png" alt="" onload="document.body.classList.add('has-shot')">
+
+<div id="placeholder" aria-hidden="false">
+  <div class="topbar"><span>Woodland Hills · Beverly Hills · San Diego · Irvine</span><span>Client Portal</span></div>
+  <header class="site">
+    <a class="brand" href="#"><img src="dk-mark.png" alt=""><span><b>DUFFY KRUSPODIN</b><small>CPAs &amp; Trusted Advisors</small></span></a>
+    <nav class="site"><a href="#">Services</a><a href="#">Industries</a><a href="#">About</a><a href="#">Insights</a><a href="#">Careers</a><a href="#">Contact</a></nav>
+  </header>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="rule"></div>
+      <h1>Grounded intelligence. Trusted progress.</h1>
+      <p>For more than 35 years, Duffy Kruspodin has helped Southern California businesses, families and nonprofits make confident financial decisions.</p>
+      <a class="btn" href="#">Talk with our team</a>
+    </div>
+  </section>
+  <section class="cards">
+    <div class="card"><h3>Tax</h3><p>Year-round planning for businesses and individuals, across entities and states.</p></div>
+    <div class="card"><h3>Audit &amp; Assurance</h3><p>Audits that hold up with lenders, investors, boards and grantors.</p></div>
+    <div class="card"><h3>Advisory</h3><p>Accounting, transactions, valuation, HR, IT and marketing support for growing companies.</p></div>
+  </section>
+  <p class="proto-note">Placeholder homepage for the chatbot prototype. Add homepage.png to this folder to show a real screenshot instead.</p>
+</div>
+
+<!-- Chat widget -->
+<section id="chat" role="dialog" aria-label="Chat with Duffy Kruspodin" aria-hidden="true">
+  <div class="chat-head">
+    <div class="avatar"><img src="dk-mark.png" alt="Duffy Kruspodin"></div>
+    <div class="who"><b id="bot-name">Duffy Kruspodin</b><small id="bot-sub">CPAs &amp; Trusted Advisors</small></div>
+    <button class="head-btn" id="chat-restart" title="Start over" aria-label="Start over">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 3v6h6"/></svg>
+    </button>
+    <button class="head-btn" id="chat-min" title="Close chat" aria-label="Close chat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div id="log" aria-live="polite"></div>
+  <form class="composer" id="composer" autocomplete="off">
+    <input id="text" type="text" placeholder="Type a message…" aria-label="Type a message">
+    <button id="send" type="submit" aria-label="Send">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </form>
+  <div class="powered">Prototype · no data is submitted</div>
+</section>
+
+<button id="launcher" aria-label="Open chat" aria-controls="chat">
+  <svg class="ic-chat" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.9 2 11.6c0 2.5 1.3 4.8 3.4 6.4L4.6 21.3c-.1.4.3.7.7.5l3.9-2c.9.2 1.8.3 2.8.3 5.5 0 10-3.9 10-8.6S17.5 3 12 3z"/></svg>
+  <svg class="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+</button>
+
+<details id="inspector">
+  <summary>Prototype inspector</summary>
+  <div class="panel">
+    <dl id="props"></dl>
+    <button type="button" id="reset-all">Reset conversation</button>
+  </div>
+</details>
+
+<script>
+(() => {
+  const STORE = "dk-chatbot-state-v1";
+  const $ = (id) => document.getElementById(id);
+  const log = $("log"), input = $("text"), send = $("send"), form = $("composer");
+  let flow = null, state = null, busy = false;
+
+  const MARK = '<div class="mini"><img src="dk-mark.png" alt=""></div>';
+  const GHOST = '<div class="mini ghost"></div>';
+
+  // ---------- storage (persists the conversation across page loads) ----------
+  const fresh = () => ({ node: null, history: [], props: {}, open: false, ended: false });
+  function load() { try { return JSON.parse(sessionStorage.getItem(STORE)) || fresh(); } catch { return fresh(); } }
+  function save() { try { sessionStorage.setItem(STORE, JSON.stringify(state)); } catch {} renderInspector(); }
+
+  // ---------- formatting ----------
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const inline = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\n/g, "<br>");
+  function withUtm(url, content) {
+    try {
+      const u = new URL(url);
+      Object.entries(flow.settings.utm || {}).forEach(([k, v]) => u.searchParams.set(k, v));
+      if (content) u.searchParams.set("utm_content", content);
+      return u.toString();
+    } catch { return url; }
+  }
+  function format(raw) {
+    const re = /\[([^\]]+)\]\((\S+?)(?:\s+"([^"]*)")?\)/g;
+    let out = "", last = 0, m;
+    while ((m = re.exec(raw))) {
+      out += inline(raw.slice(last, m.index));
+      out += `<a href="${esc(withUtm(m[2], m[3]))}" target="_blank" rel="noopener">${inline(m[1])}</a>`;
+      last = re.lastIndex;
+    }
+    return out + inline(raw.slice(last));
+  }
+
+  // ---------- rendering ----------
+  function addRow(entry, animate = true) {
+    const row = document.createElement("div");
+    row.className = "row " + entry.from;
+    const prev = log.lastElementChild;
+    const showMark = entry.from === "bot";
+    // only the last bot bubble in a run keeps the avatar
+    if (showMark && prev && prev.classList.contains("bot") && !prev.classList.contains("typing")) {
+      const m = prev.querySelector(".mini"); if (m) m.classList.add("ghost"), (m.innerHTML = "");
+    }
+    const body = entry.from === "bot" ? format(entry.text) : esc(entry.text);
+    row.innerHTML = (showMark ? MARK : "") + `<div class="bubble${entry.error ? " error" : ""}">${body}</div>`;
+    if (!animate) row.querySelector(".bubble").style.animation = "none";
+    log.appendChild(row);
+    scroll();
+  }
+  function scroll() { requestAnimationFrame(() => { log.scrollTop = log.scrollHeight; }); }
+  function clearReplies() { log.querySelectorAll(".replies, .ended").forEach((n) => n.remove()); }
+
+  function showReplies(node) {
+    clearReplies();
+    if (state.ended) {
+      const e = document.createElement("div");
+      e.className = "ended";
+      e.innerHTML = 'Conversation ended. <button type="button">Start a new chat</button>';
+      e.querySelector("button").onclick = restart;
+      log.appendChild(e);
+      setComposer(false, "Conversation ended");
+      return scroll();
+    }
+    if (node && node.buttons && node.buttons.length) {
+      const wrap = document.createElement("div");
+      wrap.className = "replies";
+      node.buttons.forEach((b) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = b.label;
+        btn.onclick = () => choose(b);
+        wrap.appendChild(btn);
+      });
+      log.appendChild(wrap);
+    }
+    setComposer(true, (node && node.input && node.input.placeholder) || flow.settings.inputPlaceholder);
+    scroll();
+  }
+  function setComposer(on, placeholder) {
+    input.disabled = !on; send.disabled = !on;
+    if (placeholder) input.placeholder = placeholder;
+  }
+
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+  async function botSay(text, opts = {}) {
+    const t = document.createElement("div");
+    t.className = "row bot typing";
+    t.innerHTML = GHOST + '<div class="bubble"><i></i><i></i><i></i></div>';
+    log.appendChild(t); scroll();
+    await wait(flow.settings.typingDelayMs ?? 600);
+    t.remove();
+    const entry = { from: "bot", text, ...opts };
+    state.history.push(entry); save();
+    addRow(entry);
+  }
+
+  function welcomeText(node) {
+    const s = flow.settings.welcomeSeason || "sep-dec";
+    let key = s;
+    if (s === "auto") { const mo = new Date().getMonth(); key = mo >= 8 ? "sep-dec" : mo <= 3 ? "jan-apr" : "may-aug"; }
+    return node.seasonalMessages[key];
+  }
+
+  // ---------- engine ----------
+  async function goTo(id) {
+    const node = flow.nodes[id];
+    busy = true; clearReplies(); setComposer(false);
+    if (!node) { await botSay(`Prototype error: no node named "${id}" in flow.json.`, { error: true }); busy = false; return showReplies(null); }
+    state.node = id;
+    if (node.set) Object.assign(state.props, node.set);
+    save();
+    const msgs = node.seasonalMessages ? [welcomeText(node)] : [];
+    for (const m of msgs.concat(node.messages || [])) await botSay(m);
+    if (node.end) state.ended = true;
+    save(); busy = false;
+    showReplies(node);
+    if (!node.buttons && window.matchMedia("(min-width: 521px)").matches) input.focus();
+  }
+
+  function userSay(text) {
+    const entry = { from: "user", text };
+    state.history.push(entry); save();
+    addRow(entry);
+  }
+
+  function choose(b) {
+    if (busy) return;
+    clearReplies();
+    userSay(b.label);
+    goTo(b.next);
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text || busy || state.ended) return;
+    input.value = "";
+    clearReplies();
+    userSay(text);
+    const node = flow.nodes[state.node] || {};
+    if (node.input) {
+      if (node.input.validate === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(text)) {
+        busy = true; setComposer(false);
+        await botSay(node.input.invalidMessage || "Please enter a valid email.");
+        busy = false; return showReplies(node);
+      }
+      state.props[node.input.save] = text; save();
+      return goTo(node.input.next);
+    }
+    // "Otherwise" branch: any typed reply on a button node
+    const o = flow.settings.otherwise;
+    const prev = state.props[o.save];
+    state.props[o.save] = prev ? prev + "\n" + text : text; save();
+    goTo(o.next);
+  });
+
+  // ---------- open / close / restart ----------
+  function setOpen(open) {
+    state.open = open; save();
+    document.body.classList.toggle("chat-open", open);
+    $("chat").setAttribute("aria-hidden", String(!open));
+    $("launcher").setAttribute("aria-label", open ? "Close chat" : "Open chat");
+    if (open && !state.node && !busy) goTo(flow.start);
+  }
+  function restart() {
+    if (busy) return;
+    state = { ...fresh(), open: true };
+    log.innerHTML = ""; save();
+    goTo(flow.start);
+  }
+  $("launcher").onclick = () => setOpen(!state.open);
+  $("chat-min").onclick = () => setOpen(false);
+  $("chat-restart").onclick = restart;
+  $("reset-all").onclick = () => { try { sessionStorage.removeItem(STORE); } catch {} location.reload(); };
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && state && state.open) setOpen(false); });
+
+  function renderInspector() {
+    if (!state) return;
+    const rows = [["Current node", state.node || "(not started)"], ...Object.entries(state.props)];
+    $("props").innerHTML = rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("");
+  }
+
+  // ---------- boot ----------
+  fetch("flow.json", { cache: "no-store" })
+    .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then((data) => {
+      flow = data;
+      $("bot-name").textContent = flow.settings.botName;
+      $("bot-sub").textContent = flow.settings.botSubtitle;
+      state = load();
+      if (state.node && !flow.nodes[state.node]) state = fresh();
+      state.history.forEach((h) => addRow(h, false));
+      if (state.node) showReplies(flow.nodes[state.node]);
+      renderInspector();
+      if (state.open) setOpen(true);
+    })
+    .catch(() => {
+      state = fresh();
+      log.innerHTML = `<div class="row bot">${MARK}<div class="bubble error">Couldn't load flow.json. Browsers block this when the file is opened directly. From this folder run <b>python3 -m http.server</b> and open http://localhost:8000.</div></div>`;
+      setComposer(false);
+      $("launcher").onclick = () => document.body.classList.toggle("chat-open");
+    });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1225 @@
+{
+  "_readme": "All chatbot copy and routing lives here. Edit 'messages' and 'buttons' freely. Each button's 'next' must match a node name below. Message formatting: **bold**, a line break with \\n, and links as [link text](https://url \"utm_content-value\"). UTM source/medium/campaign are added automatically from settings.utm.",
+  "settings": {
+    "botName": "Duffy Kruspodin",
+    "botSubtitle": "CPAs & Trusted Advisors",
+    "typingDelayMs": 600,
+    "welcomeSeason": "sep-dec",
+    "_welcomeSeasonOptions": "sep-dec, jan-apr, may-aug, or auto (picks by today's date)",
+    "inputPlaceholder": "Type a message…",
+    "otherwise": {
+      "next": "Follow-Up Offer",
+      "save": "Chatbot Question (Chatflow)"
+    },
+    "utm": {
+      "utm_source": "chatbot",
+      "utm_medium": "chat",
+      "utm_campaign": "website-chatflow"
+    }
+  },
+  "start": "Welcome",
+  "nodes": {
+    "Welcome": {
+      "seasonalMessages": {
+        "sep-dec": "Year-end is six weeks away. Tax moves, audits and books all have deadlines coming. What's on your plate?",
+        "jan-apr": "Tax season is here. Need help before the deadline, or something else?",
+        "may-aug": "Mid-year is when small gaps in your books, HR and systems start turning into year-end problems. What should we look at?"
+      },
+      "buttons": [
+        {
+          "label": "Get guidance",
+          "next": "Outcome Menu"
+        },
+        {
+          "label": "Offices & our team",
+          "next": "ABOUT – Menu"
+        },
+        {
+          "label": "Talk to someone",
+          "next": "LEAD – Get Name"
+        }
+      ]
+    },
+    "Main Menu": {
+      "messages": [
+        "What else can we help you with?"
+      ],
+      "buttons": [
+        {
+          "label": "Get guidance",
+          "next": "Outcome Menu"
+        },
+        {
+          "label": "Offices & our team",
+          "next": "ABOUT – Menu"
+        },
+        {
+          "label": "Talk to someone",
+          "next": "LEAD – Get Name"
+        }
+      ]
+    },
+    "Outcome Menu": {
+      "messages": [
+        "Happy to point you in the right direction. What are you working on?"
+      ],
+      "buttons": [
+        {
+          "label": "Selling, buying or valuing a business",
+          "next": "Q – Transaction or Valuation"
+        },
+        {
+          "label": "Paying less in taxes / staying compliant",
+          "next": "Q – Business or Personal Tax"
+        },
+        {
+          "label": "Getting my books and finances in order",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Preparing for an audit",
+          "next": "Q – Audit Type"
+        },
+        {
+          "label": "Estate, gift or trust planning",
+          "next": "SVC – Estate & Trusts – Summary"
+        },
+        {
+          "label": "HR and people support",
+          "next": "SVC – HR Services – Summary"
+        },
+        {
+          "label": "IT and cybersecurity",
+          "next": "SVC – IT Services – Summary"
+        },
+        {
+          "label": "Growing my business through marketing",
+          "next": "SVC – Marketing Services – Summary"
+        },
+        {
+          "label": "Find help for my industry",
+          "next": "IND – Industry Menu"
+        },
+        {
+          "label": "Not sure / something else",
+          "next": "Free-Text Question"
+        }
+      ]
+    },
+    "Q – Transaction or Valuation": {
+      "messages": [
+        "What are you looking for help with?"
+      ],
+      "buttons": [
+        {
+          "label": "Buying or selling",
+          "next": "SVC – Transaction Advisory – Summary"
+        },
+        {
+          "label": "Valuation",
+          "next": "SVC – Business Valuation – Summary"
+        }
+      ]
+    },
+    "Q – Business or Personal Tax": {
+      "messages": [
+        "Is this for your business or for you personally?"
+      ],
+      "buttons": [
+        {
+          "label": "My business",
+          "next": "SVC – Business Tax – Summary"
+        },
+        {
+          "label": "Me personally",
+          "next": "SVC – Individual Tax – Summary"
+        }
+      ]
+    },
+    "Q – Audit Type": {
+      "messages": [
+        "What kind of audit?"
+      ],
+      "buttons": [
+        {
+          "label": "Financial statement",
+          "next": "SVC – Financial Statement Audit – Summary"
+        },
+        {
+          "label": "Nonprofit",
+          "next": "SVC – Nonprofit Audit – Summary"
+        },
+        {
+          "label": "Employee benefit plan",
+          "next": "SVC – EBP Audit – Summary"
+        }
+      ]
+    },
+    "Free-Text Question": {
+      "messages": [
+        "Of course. Tell us a little about what you're looking for, and we'll point you in the right direction."
+      ],
+      "input": {
+        "save": "Chatbot Question (Chatflow)",
+        "next": "Follow-Up Offer",
+        "placeholder": "Type your question…"
+      }
+    },
+    "Follow-Up Offer": {
+      "messages": [
+        "Thanks, got it. Would you like someone from our team to follow up?"
+      ],
+      "buttons": [
+        {
+          "label": "Yes, contact me",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "No thanks, keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – Transaction Advisory – Summary": {
+      "set": {
+        "Service Interest (Chatflow)": "Transaction Advisory"
+      },
+      "messages": [
+        "Great, check it out.",
+        "**Transaction Advisory**\nBefore you buy or sell, we dig into the earnings, risks and deal terms so nothing surprises you at closing. [See our transaction advisory services →](https://dk.cpa/services/transaction-advisory-services/ \"transaction-advisory-learnmore\")\nWhat would you like to do next?"
+      ],
+      "buttons": [
+        {
+          "label": "Plan for the tax side of a sale",
+          "next": "SVC – Business Tax – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – Business Valuation – Summary": {
+      "set": {
+        "Service Interest (Chatflow)": "Business Valuation"
+      },
+      "messages": [
+        "Great, check it out.",
+        "**Business Valuation**\nWhether it's for a sale, a succession plan or a gift to family, we give you an objective, defensible value to make the decision on. [See our business valuation services →](https://dk.cpa/services/transaction-advisory-services/business-valuation-services/ \"business-valuation-learnmore\")\nWhat would you like to do next?"
+      ],
+      "buttons": [
+        {
+          "label": "Explore a sale or transition",
+          "next": "SVC – Transaction Advisory – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – Business Tax – Summary": {
+      "set": {
+        "Service Interest (Chatflow)": "Business Tax"
+      },
+      "messages": [
+        "Great, check it out.",
+        "**Business Tax**\nWe plan with you year-round, across entities and states, so filing season holds no surprises. [See our business tax services →](https://dk.cpa/services/tax/business-tax/ \"business-tax-learnmore\")\nWhat would you like to do next?"
+      ],
+      "buttons": [
+        {
+          "label": "Get the tax planning guide",
+          "next": "SVC – Business Tax – Resource"
+        },
+        {
+          "label": "Make sure your books can support it",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – Business Tax – Resource": {
+      "messages": [
+        "Here's the Strategic Tax Planning for Business Owners guide: [Read the guide →](https://dk.cpa/tax/strategic-tax-planning-for-business-owners-a-complete-guide-to-maximizing-profits-and-minimizing-liabilities/ \"business-tax-resource\")"
+      ],
+      "buttons": [
+        {
+          "label": "Make sure your books can support it",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – Individual Tax – Summary": {
+      "set": {
+        "Service Interest (Chatflow)": "Individual Tax"
+      },
+      "messages": [
+        "Great, check it out.",
+        "**Individual Tax**\nFrom complex returns to multistate income, we plan ahead with you instead of just filing what happened. [See our individual tax services →](https://dk.cpa/services/tax/individual-tax-services/ \"individual-tax-learnmore\")\nWhat would you like to do next?"
+      ],
+      "buttons": [
+        {
+          "label": "See what's changing this year",
+          "next": "SVC – Individual Tax – Resource"
+        },
+        {
+          "label": "Plan what you'll pass on",
+          "next": "SVC – Estate & Trusts – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – Individual Tax – Resource": {
+      "messages": [
+        "Here's our rundown of the tax law changes you need to know about: [Read the article →](https://dk.cpa/tax/2026-tax-law-changes-you-need-to-know-about/ \"individual-tax-resource\")"
+      ],
+      "buttons": [
+        {
+          "label": "Plan what you'll pass on",
+          "next": "SVC – Estate & Trusts – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – Accounting – Summary": {
+      "set": {
+        "Service Interest (Chatflow)": "Accounting"
+      },
+      "messages": [
+        "Great, check it out.",
+        "**Accounting**\nFrom day-to-day bookkeeping to controller and fractional CFO support, we get your books closing on time and your reports telling you something you can act on. [See our accounting services →](https://dk.cpa/services/accounting-finance-solutions/ \"accounting-learnmore\")\nWhat would you like to do next?"
+      ],
+      "buttons": [
+        {
+          "label": "Should you outsource your accounting?",
+          "next": "SVC – Accounting – Resource"
+        },
+        {
+          "label": "Protect your financial systems",
+          "next": "SVC – IT Services – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – Accounting – Resource": {
+      "messages": [
+        "Here's our take on when it makes sense to outsource your accounting: [Read the article →](https://dk.cpa/accounting-finance/accounting-and-finance-should-i-outsource-my-accounting/ \"accounting-resource\")"
+      ],
+      "buttons": [
+        {
+          "label": "Protect your financial systems",
+          "next": "SVC – IT Services – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – Financial Statement Audit – Summary": {
+      "set": {
+        "Service Interest (Chatflow)": "Financial Statement Audit"
+      },
+      "messages": [
+        "Great, check it out.",
+        "**Financial Statement Audit**\nWe run audits that hold up with lenders, investors and boards, and tell you what to prepare before fieldwork starts. [See our audit and assurance services →](https://dk.cpa/services/audit-and-assurance-services/ \"fs-audit-learnmore\")\nWhat would you like to do next?"
+      ],
+      "buttons": [
+        {
+          "label": "Get the financial audit guide",
+          "next": "SVC – Financial Statement Audit – Resource"
+        },
+        {
+          "label": "Get your books audit-ready",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – Financial Statement Audit – Resource": {
+      "messages": [
+        "Here's our guide to financial audits: [Read the guide →](https://dk.cpa/audit-assurance/the-ultimate-guide-to-financial-audits-unlocking-business-growth-and-compliance/ \"fs-audit-resource\")"
+      ],
+      "buttons": [
+        {
+          "label": "Get your books audit-ready",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – Nonprofit Audit – Summary": {
+      "set": {
+        "Service Interest (Chatflow)": "Nonprofit Audit"
+      },
+      "messages": [
+        "Great, check it out.",
+        "**Nonprofit Audit**\nWe handle financial statement and Single Audits for nonprofits so your board, funders and grantors can rely on the numbers behind your mission. [See how we work with nonprofits →](https://dk.cpa/industries/not-for-profit/ \"nonprofit-audit-learnmore\")\nWhat would you like to do next?"
+      ],
+      "buttons": [
+        {
+          "label": "Get the audit readiness guide",
+          "next": "SVC – Nonprofit Audit – Resource"
+        },
+        {
+          "label": "Strengthen your day-to-day accounting",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – Nonprofit Audit – Resource": {
+      "messages": [
+        "Here's the Nonprofit Audit Readiness Guide: [Read the guide →](https://dk.cpa/services/audit-and-assurance-services/nonprofit-audit-readiness-guide/ \"nonprofit-audit-resource\")"
+      ],
+      "buttons": [
+        {
+          "label": "Strengthen your day-to-day accounting",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – EBP Audit – Summary": {
+      "set": {
+        "Service Interest (Chatflow)": "Employee Benefit Plan Audit"
+      },
+      "messages": [
+        "Great, check it out.",
+        "**Employee Benefit Plan Audit**\nWe audit 401(k) and other benefit plans and help you catch the control gaps that tend to surface during fieldwork. [See our benefit plan audit services →](https://dk.cpa/services/audit-and-assurance-services/employee-benefit-plan-audits/ \"ebp-audit-learnmore\")\nWhat would you like to do next?"
+      ],
+      "buttons": [
+        {
+          "label": "Get the 103(a)(3) audit checklist",
+          "next": "SVC – EBP Audit – Resource"
+        },
+        {
+          "label": "Tighten up HR and payroll compliance",
+          "next": "SVC – HR Services – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – EBP Audit – Resource": {
+      "messages": [
+        "Here's the 103(a)(3) audit checklist: [Get the checklist →](https://dk.cpa/audit-assurance/streamline-your-erisa-audit-download-the-103a3c-audit-checklist/ \"ebp-audit-resource\")"
+      ],
+      "buttons": [
+        {
+          "label": "Tighten up HR and payroll compliance",
+          "next": "SVC – HR Services – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – Estate & Trusts – Summary": {
+      "set": {
+        "Service Interest (Chatflow)": "Estate & Trusts"
+      },
+      "messages": [
+        "Great, check it out.",
+        "**Estate & Trusts**\nWe help families and fiduciaries handle estate, gift and trust filings and plan wealth transfers before deadlines force the decisions. [See our estate, gift and trust services →](https://dk.cpa/services/tax/estate-gift-trust/ \"estate-trusts-learnmore\")\nWhat would you like to do next?"
+      ],
+      "buttons": [
+        {
+          "label": "When is a gift not a gift?",
+          "next": "SVC – Estate & Trusts – Resource"
+        },
+        {
+          "label": "Value a business before transferring it",
+          "next": "SVC – Business Valuation – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – Estate & Trusts – Resource": {
+      "messages": [
+        "Here's our article on when a gift isn't treated as a gift for tax purposes: [Read the article →](https://dk.cpa/tax/estate-trust/when-is-a-gift-not-a-gift/ \"estate-trusts-resource\")"
+      ],
+      "buttons": [
+        {
+          "label": "Value a business before transferring it",
+          "next": "SVC – Business Valuation – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – HR Services – Summary": {
+      "set": {
+        "Service Interest (Chatflow)": "HR Services"
+      },
+      "messages": [
+        "Great, check it out.",
+        "**HR Services**\nFrom handbooks and compliance to day-to-day HR strategy, we give growing businesses the HR support they don't have in-house yet. [See our HR services →](https://dk.cpa/services/business-operations-support/hr-services/ \"hr-learnmore\")\nWhat would you like to do next?"
+      ],
+      "buttons": [
+        {
+          "label": "See why HR documentation matters",
+          "next": "SVC – HR Services – Resource"
+        },
+        {
+          "label": "Keep payroll and books in sync",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – HR Services – Resource": {
+      "messages": [
+        "Here's why documentation is the foundation of HR compliance: [Read the article →](https://dk.cpa/business-operations/hr-people-management/why-documentation-is-the-foundation-of-hr-compliance/ \"hr-resource\")"
+      ],
+      "buttons": [
+        {
+          "label": "Keep payroll and books in sync",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – IT Services – Summary": {
+      "set": {
+        "Service Interest (Chatflow)": "IT Services"
+      },
+      "messages": [
+        "Great, check it out.",
+        "**IT Services**\nWe bring stability and strategy to your IT infrastructure and cybersecurity so your systems stay secure. [See our IT services →](https://dk.cpa/services/business-operations-support/it-services/ \"it-learnmore\")\nWhat would you like to do next?"
+      ],
+      "buttons": [
+        {
+          "label": "See why email authentication matters",
+          "next": "SVC – IT Services – Resource"
+        },
+        {
+          "label": "Get HR and IT working together",
+          "next": "SVC – HR Services – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – IT Services – Resource": {
+      "messages": [
+        "Here's why email authentication protects your brand: [Read the article →](https://dk.cpa/business-operations/it-services/the-identity-foundation-why-email-authentication-protects-your-brand/ \"it-resource\")"
+      ],
+      "buttons": [
+        {
+          "label": "Get HR and IT working together",
+          "next": "SVC – HR Services – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – Marketing Services – Summary": {
+      "set": {
+        "Service Interest (Chatflow)": "Marketing Services"
+      },
+      "messages": [
+        "Great, check it out.",
+        "**Marketing Services**\nWe build the strategy and campaigns behind your growth, and track what's actually bringing in business. [See our marketing services →](https://dk.cpa/services/business-operations-support/marketing-services/ \"marketing-learnmore\")\nWhat would you like to do next?"
+      ],
+      "buttons": [
+        {
+          "label": "Take the growth structure quiz",
+          "next": "SVC – Marketing Services – Resource"
+        },
+        {
+          "label": "See which growth is profitable",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "SVC – Marketing Services – Resource": {
+      "messages": [
+        "Here's the Growth Structure Quiz for small business owners: [Take the quiz →](https://dk.cpa/growth-structure-quiz-for-small-business-owners/ \"marketing-resource\")"
+      ],
+      "buttons": [
+        {
+          "label": "See which growth is profitable",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "IND – Industry Menu": {
+      "messages": [
+        "Which industry are you in?"
+      ],
+      "buttons": [
+        {
+          "label": "Real Estate",
+          "next": "IND – Real Estate – Summary"
+        },
+        {
+          "label": "Not-for-Profit",
+          "next": "IND – Not-for-Profit – Summary"
+        },
+        {
+          "label": "Professional Services",
+          "next": "IND – Professional Services – Summary"
+        },
+        {
+          "label": "Construction",
+          "next": "IND – Construction – Summary"
+        },
+        {
+          "label": "Manufacturing & Distribution",
+          "next": "IND – Manufacturing & Distribution – Summary"
+        },
+        {
+          "label": "Restaurants & Hospitality",
+          "next": "IND – Restaurants & Hospitality – Summary"
+        },
+        {
+          "label": "Arts, Sports & Entertainment",
+          "next": "IND – Arts, Sports & Entertainment – Summary"
+        }
+      ]
+    },
+    "IND – Real Estate – Summary": {
+      "set": {
+        "Industry (Chatflow)": "Real Estate"
+      },
+      "messages": [
+        "**Real Estate**\nWe help real estate investors, developers and operators structure entities, plan around 1031 exchanges and see how the whole portfolio is performing. [See how we work with real estate clients →](https://dk.cpa/industries/real-estate/ \"ind-real-estate-learnmore\")\nWhat would you like to do next?"
+      ],
+      "buttons": [
+        {
+          "label": "Take the asset value quiz",
+          "next": "IND – Real Estate – Resource"
+        },
+        {
+          "label": "Structure your properties for tax",
+          "next": "SVC – Business Tax – Summary"
+        },
+        {
+          "label": "Get portfolio-level reporting",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "IND – Real Estate – Resource": {
+      "messages": [
+        "Here's the Asset Value Optimization Quiz for real estate professionals: [Take the quiz →](https://dk.cpa/asset-value-optimization-quiz-for-real-estate-professionals/ \"ind-real-estate-resource\")"
+      ],
+      "buttons": [
+        {
+          "label": "Structure your properties for tax",
+          "next": "SVC – Business Tax – Summary"
+        },
+        {
+          "label": "Get portfolio-level reporting",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "IND – Not-for-Profit – Summary": {
+      "set": {
+        "Industry (Chatflow)": "Not-for-Profit"
+      },
+      "messages": [
+        "**Not-for-Profit**\nWe handle audits, Single Audits and the reporting your board, donors and regulators expect, so compliance doesn't pull you away from the mission. [See how we work with nonprofits →](https://dk.cpa/industries/not-for-profit/ \"ind-not-for-profit-learnmore\")\nWhat would you like to do next?"
+      ],
+      "buttons": [
+        {
+          "label": "Get the audit readiness guide",
+          "next": "IND – Not-for-Profit – Resource"
+        },
+        {
+          "label": "Prepare for your audit",
+          "next": "SVC – Nonprofit Audit – Summary"
+        },
+        {
+          "label": "Strengthen your day-to-day accounting",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "IND – Not-for-Profit – Resource": {
+      "messages": [
+        "Here's the Nonprofit Audit Readiness Guide: [Read the guide →](https://dk.cpa/services/audit-and-assurance-services/nonprofit-audit-readiness-guide/ \"ind-not-for-profit-resource\")"
+      ],
+      "buttons": [
+        {
+          "label": "Prepare for your audit",
+          "next": "SVC – Nonprofit Audit – Summary"
+        },
+        {
+          "label": "Strengthen your day-to-day accounting",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "IND – Professional Services – Summary": {
+      "set": {
+        "Industry (Chatflow)": "Professional Services"
+      },
+      "messages": [
+        "**Professional Services**\nFor firms that sell expertise, we help you see which clients and services make money and build the finance and HR support to grow. [See how we work with professional services firms →](https://dk.cpa/industries/professional-services/ \"ind-professional-services-learnmore\")\nWhat would you like to do next?"
+      ],
+      "buttons": [
+        {
+          "label": "Take the profitability self-assessment",
+          "next": "IND – Professional Services – Resource"
+        },
+        {
+          "label": "Get fractional CFO support",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Get HR support for your team",
+          "next": "SVC – HR Services – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "IND – Professional Services – Resource": {
+      "messages": [
+        "Here's the Profitability Self-Assessment for professional services firms: [Take the assessment →](https://dk.cpa/profitability-self-assessment-for-professional-services/ \"ind-professional-services-resource\")"
+      ],
+      "buttons": [
+        {
+          "label": "Get fractional CFO support",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Get HR support for your team",
+          "next": "SVC – HR Services – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "IND – Construction – Summary": {
+      "set": {
+        "Industry (Chatflow)": "Construction"
+      },
+      "messages": [
+        "**Construction**\nWe help contractors get job costing, cash flow and multistate tax right, and deliver the financial statements bonding companies and lenders ask for. [See how we work with construction companies →](https://dk.cpa/industries/construction/ \"ind-construction-learnmore\")\nWhat would you like to do next?"
+      ],
+      "buttons": [
+        {
+          "label": "Take the construction readiness quiz",
+          "next": "IND – Construction – Resource"
+        },
+        {
+          "label": "Tighten job costing and cash flow",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Get bonding-ready financial statements",
+          "next": "SVC – Financial Statement Audit – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "IND – Construction – Resource": {
+      "messages": [
+        "Here's the Readiness Assessment Quiz for construction leaders: [Take the quiz →](https://dk.cpa/readiness-assessment-quiz-for-construction-leaders/ \"ind-construction-resource\")"
+      ],
+      "buttons": [
+        {
+          "label": "Tighten job costing and cash flow",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Get bonding-ready financial statements",
+          "next": "SVC – Financial Statement Audit – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "IND – Manufacturing & Distribution – Summary": {
+      "set": {
+        "Industry (Chatflow)": "Manufacturing & Distribution"
+      },
+      "messages": [
+        "**Manufacturing & Distribution**\nWe help manufacturers and distributors see what each product really costs to make and move, and keep shift and payroll compliance from turning into a problem. [See how we work with manufacturers and distributors →](https://dk.cpa/industries/manufacturing-distribution/ \"ind-manufacturing-learnmore\")\nWhat would you like to do next?"
+      ],
+      "buttons": [
+        {
+          "label": "Take the manufacturing readiness quiz",
+          "next": "IND – Manufacturing & Distribution – Resource"
+        },
+        {
+          "label": "Get a clearer view of product costs",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Stay ahead of shift and payroll compliance",
+          "next": "SVC – HR Services – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "IND – Manufacturing & Distribution – Resource": {
+      "messages": [
+        "Here's the Readiness Assessment Quiz for manufacturing leaders: [Take the quiz →](https://dk.cpa/readiness-assessment-quiz-for-manufacturing-leaders/ \"ind-manufacturing-resource\")"
+      ],
+      "buttons": [
+        {
+          "label": "Get a clearer view of product costs",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Stay ahead of shift and payroll compliance",
+          "next": "SVC – HR Services – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "IND – Restaurants & Hospitality – Summary": {
+      "set": {
+        "Industry (Chatflow)": "Restaurants & Hospitality"
+      },
+      "messages": [
+        "**Restaurants & Hospitality**\nWe help multi-location restaurant and hospitality groups keep payroll, reporting and location-level numbers clean enough to make decisions on. [See how we work with restaurant and hospitality groups →](https://dk.cpa/industries/restaurants-hospitality/ \"ind-restaurants-learnmore\")\nWhat would you like to do next?"
+      ],
+      "buttons": [
+        {
+          "label": "Get location-level reporting",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Keep payroll compliant",
+          "next": "SVC – HR Services – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "IND – Arts, Sports & Entertainment – Summary": {
+      "set": {
+        "Industry (Chatflow)": "Arts, Sports & Entertainment"
+      },
+      "messages": [
+        "**Arts, Sports & Entertainment**\nWe help artists, athletes and entertainment businesses manage income that comes from many places, often across states, and keep the books behind it in order. [See how we work with arts, sports and entertainment clients →](https://dk.cpa/industries/arts-sports-entertainment/ \"ind-arts-learnmore\")\nWhat would you like to do next?"
+      ],
+      "buttons": [
+        {
+          "label": "Handle multistate income",
+          "next": "SVC – Individual Tax – Summary"
+        },
+        {
+          "label": "Get your books in order",
+          "next": "SVC – Accounting – Summary"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "Keep browsing",
+          "next": "Main Menu"
+        }
+      ]
+    },
+    "ABOUT – Menu": {
+      "messages": [
+        "What would you like to know?"
+      ],
+      "buttons": [
+        {
+          "label": "Find an office",
+          "next": "ABOUT – Closest Location"
+        },
+        {
+          "label": "Meet us",
+          "next": "ABOUT – Meet Us"
+        },
+        {
+          "label": "Join our team",
+          "next": "ABOUT – Join Our Team"
+        }
+      ]
+    },
+    "ABOUT – Closest Location": {
+      "messages": [
+        "Duffy Kruspodin has offices across Southern California. Which one's closest to you?"
+      ],
+      "buttons": [
+        {
+          "label": "Los Angeles County (Woodland Hills)",
+          "next": "ABOUT – Office – Woodland Hills"
+        },
+        {
+          "label": "Beverly Hills",
+          "next": "ABOUT – Office – Beverly Hills"
+        },
+        {
+          "label": "San Diego",
+          "next": "ABOUT – Office – San Diego"
+        },
+        {
+          "label": "Irvine",
+          "next": "ABOUT – Office – Irvine"
+        }
+      ]
+    },
+    "ABOUT – Office – Woodland Hills": {
+      "set": {
+        "Location Preference (Chatflow)": "Los Angeles County (Woodland Hills)"
+      },
+      "messages": [
+        "**Woodland Hills (HQ)**\n21600 W Oxnard St, Suite 2000, Woodland Hills, CA 91367\n(818) 385-0585",
+        "Want to leave your info so someone from this office can follow up?"
+      ],
+      "buttons": [
+        {
+          "label": "Yes",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "No, just needed the address",
+          "next": "ABOUT – Menu"
+        }
+      ]
+    },
+    "ABOUT – Office – Beverly Hills": {
+      "set": {
+        "Location Preference (Chatflow)": "Beverly Hills"
+      },
+      "messages": [
+        "**Beverly Hills**\n9401 Wilshire Blvd, Suite 810, Beverly Hills, CA 90212\n(310) 274-9922",
+        "Want to leave your info so someone from this office can follow up?"
+      ],
+      "buttons": [
+        {
+          "label": "Yes",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "No, just needed the address",
+          "next": "ABOUT – Menu"
+        }
+      ]
+    },
+    "ABOUT – Office – San Diego": {
+      "set": {
+        "Location Preference (Chatflow)": "San Diego"
+      },
+      "messages": [
+        "**San Diego**\n4365 Executive Dr, Suite 1500, San Diego, CA 92121\n(858) 642-5050",
+        "Want to leave your info so someone from this office can follow up?"
+      ],
+      "buttons": [
+        {
+          "label": "Yes",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "No, just needed the address",
+          "next": "ABOUT – Menu"
+        }
+      ]
+    },
+    "ABOUT – Office – Irvine": {
+      "set": {
+        "Location Preference (Chatflow)": "Irvine"
+      },
+      "messages": [
+        "**Irvine**\n2 Park Plaza, Suite 525, Irvine, CA 92614\n(949) 535-0885",
+        "Want to leave your info so someone from this office can follow up?"
+      ],
+      "buttons": [
+        {
+          "label": "Yes",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "No, just needed the address",
+          "next": "ABOUT – Menu"
+        }
+      ]
+    },
+    "ABOUT – Meet Us": {
+      "messages": [
+        "Duffy Kruspodin has served Southern California businesses, families and nonprofits for more than 35 years. [Who we are →](https://dk.cpa/about-us/who-we-are/ \"about-who-we-are\") · [Meet our team →](https://dk.cpa/about-us/our-team/ \"about-team\") · [Awards & recognition →](https://dk.cpa/about-us/awards-accolades/ \"about-awards\")"
+      ],
+      "buttons": [
+        {
+          "label": "Find an office",
+          "next": "ABOUT – Closest Location"
+        },
+        {
+          "label": "Talk with our team",
+          "next": "LEAD – Get Name"
+        },
+        {
+          "label": "See our services",
+          "next": "Outcome Menu"
+        }
+      ]
+    },
+    "ABOUT – Join Our Team": {
+      "messages": [
+        "We're always looking for people who want to grow with us. [See open roles →](https://dk.cpa/about-us/careers/ \"about-careers\")"
+      ],
+      "buttons": [
+        {
+          "label": "Meet us",
+          "next": "ABOUT – Meet Us"
+        },
+        {
+          "label": "Find an office",
+          "next": "ABOUT – Closest Location"
+        }
+      ]
+    },
+    "LEAD – Get Name": {
+      "set": {
+        "Chatbot Follow-Up Requested (Chatflow)": true
+      },
+      "messages": [
+        "Great, a member of our team can get back to you. Before we do that, I'll need two more things. What's your name?"
+      ],
+      "input": {
+        "save": "Contact Name",
+        "next": "LEAD – Get Email",
+        "placeholder": "Your name"
+      }
+    },
+    "LEAD – Get Email": {
+      "messages": [
+        "Finally, what's your email?"
+      ],
+      "input": {
+        "save": "Email",
+        "next": "LEAD – Thank You",
+        "placeholder": "you@company.com",
+        "validate": "email",
+        "invalidMessage": "That email doesn't look quite right. Could you double-check it?"
+      }
+    },
+    "LEAD – Thank You": {
+      "messages": [
+        "Thank you! A member of our team will reach out to you."
+      ],
+      "end": true
+    }
+  }
+}
