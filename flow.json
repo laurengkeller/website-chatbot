@@ -239,7 +239,7 @@
       ],
       "buttons": [
         {
-          "label": "Get the tax planning guide",
+          "label": "Guide: Strategic Tax Planning for Business Owners",
           "next": "SVC – Business Tax – Resource"
         },
         {
@@ -286,7 +286,7 @@
       ],
       "buttons": [
         {
-          "label": "See what's changing this year",
+          "label": "Article: 2026 Tax Law Changes to Know",
           "next": "SVC – Individual Tax – Resource"
         },
         {
@@ -333,7 +333,7 @@
       ],
       "buttons": [
         {
-          "label": "Should you outsource your accounting?",
+          "label": "Article: Should You Outsource Your Accounting?",
           "next": "SVC – Accounting – Resource"
         },
         {
@@ -380,7 +380,7 @@
       ],
       "buttons": [
         {
-          "label": "Get the financial audit guide",
+          "label": "Guide: The Ultimate Guide to Financial Audits",
           "next": "SVC – Financial Statement Audit – Resource"
         },
         {
@@ -427,7 +427,7 @@
       ],
       "buttons": [
         {
-          "label": "Get the audit readiness guide",
+          "label": "Guide: Nonprofit Audit Readiness",
           "next": "SVC – Nonprofit Audit – Resource"
         },
         {
@@ -474,7 +474,7 @@
       ],
       "buttons": [
         {
-          "label": "Get the 103(a)(3) audit checklist",
+          "label": "Checklist: 103(a)(3) Audit Checklist",
           "next": "SVC – EBP Audit – Resource"
         },
         {
@@ -521,7 +521,7 @@
       ],
       "buttons": [
         {
-          "label": "When is a gift not a gift?",
+          "label": "Article: When Is a Gift Not a Gift?",
           "next": "SVC – Estate & Trusts – Resource"
         },
         {
@@ -568,7 +568,7 @@
       ],
       "buttons": [
         {
-          "label": "See why HR documentation matters",
+          "label": "Article: Why Documentation Is the Foundation of HR Compliance",
           "next": "SVC – HR Services – Resource"
         },
         {
@@ -615,7 +615,7 @@
       ],
       "buttons": [
         {
-          "label": "See why email authentication matters",
+          "label": "Article: Why Email Authentication Protects Your Brand",
           "next": "SVC – IT Services – Resource"
         },
         {
@@ -662,7 +662,7 @@
       ],
       "buttons": [
         {
-          "label": "Take the growth structure quiz",
+          "label": "Quiz: Growth Structure Quiz for Small Business Owners",
           "next": "SVC – Marketing Services – Resource"
         },
         {
@@ -743,7 +743,7 @@
       ],
       "buttons": [
         {
-          "label": "Take the asset value quiz",
+          "label": "Quiz: Asset Value Optimization for Real Estate",
           "next": "IND – Real Estate – Resource"
         },
         {
@@ -797,7 +797,7 @@
       ],
       "buttons": [
         {
-          "label": "Get the audit readiness guide",
+          "label": "Guide: Nonprofit Audit Readiness",
           "next": "IND – Not-for-Profit – Resource"
         },
         {
@@ -851,7 +851,7 @@
       ],
       "buttons": [
         {
-          "label": "Take the profitability self-assessment",
+          "label": "Assessment: Profitability Self-Assessment",
           "next": "IND – Professional Services – Resource"
         },
         {
@@ -905,7 +905,7 @@
       ],
       "buttons": [
         {
-          "label": "Take the construction readiness quiz",
+          "label": "Quiz: Readiness Assessment for Construction Leaders",
           "next": "IND – Construction – Resource"
         },
         {
@@ -959,7 +959,7 @@
       ],
       "buttons": [
         {
-          "label": "Take the manufacturing readiness quiz",
+          "label": "Quiz: Readiness Assessment for Manufacturing Leaders",
           "next": "IND – Manufacturing & Distribution – Resource"
         },
         {
