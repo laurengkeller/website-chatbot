@@ -21,9 +21,9 @@
   "nodes": {
     "Welcome": {
       "seasonalMessages": {
-        "sep-dec": "Year-end is six weeks away. Tax moves, audits and books all have deadlines coming. What's on your plate?",
-        "jan-apr": "Tax season is here. Need help before the deadline, or something else?",
-        "may-aug": "Mid-year is when small gaps in your books, HR and systems start turning into year-end problems. What should we look at?"
+        "sep-dec": "Year-end is six weeks away. Tax moves, audits and books all have deadlines coming.",
+        "jan-apr": "Tax season is here.",
+        "may-aug": "Mid-year is when small gaps in your books, HR and systems start turning into year-end problems."
       },
       "messages": [
         "What would you like to do?"
